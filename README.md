@@ -22,3 +22,5 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+[![Codeship Status for myYearOfCode/the_morning_T](https://app.codeship.com/projects/5eed1dd0-474f-0137-cd63-3a91933c600e/status?branch=master)](https://app.codeship.com/projects/337453)
