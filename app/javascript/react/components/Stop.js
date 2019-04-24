@@ -22,7 +22,6 @@ class Stop extends React.Component {
         })
         .then(response => response.json())
         .then(body => {
-          console.log(body)
           this.setState({stop: body})
         })
         .catch(error => console.error(`Error in fetch: ${error.message}`));
