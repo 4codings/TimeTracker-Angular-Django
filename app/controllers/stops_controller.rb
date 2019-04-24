@@ -1,4 +1,5 @@
 class StopsController < ApplicationController
+
   def index
     @stops=Stop.all
   end
@@ -7,20 +8,24 @@ class StopsController < ApplicationController
     @stop=Stop.find(params[:id])
   end
 
+  def new
+    @stop = Stop.new
+  end
+
   def create
-    new_stop = Stop.new(params[:stop])
-
-    if new_stop.save
+    @stop = Stop.new(stop_params)
+    if @stop.save
       flash[:notice] = "stop created successfully"
-
+      redirect_to @stop
     else
-      flash[:error] = "error"
-
+      flash.now[:error] = @stop.errors.full_messages.join(", ")
+      render action: :new
     end
   end
 
-  def new
-
+  private
+  def stop_params
+    params.require(:stop).permit(:name)
   end
 
 end
