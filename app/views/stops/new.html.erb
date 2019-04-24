@@ -1,1 +1,6 @@
 <h1>New Stop Page</h1>
+
+<%= form_for(@stop) do |f| %>
+  Name: <%= f.text_field :name %>
+  <%= f.submit "Submit Stop" %>
+<% end %>
