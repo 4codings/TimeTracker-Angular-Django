@@ -1,7 +1,23 @@
 import React from 'react'
+import { Router, browserHistory, Route, IndexRoute } from 'react-router';
+
+
+import Stop from './Stop'
 
 export const App = (props) => {
-  return (<h1>Make It So React</h1>)
+  // debugger
+  return (
+
+    <Router history={browserHistory}>
+      <Route path='/' component={Stop} >
+        // <IndexRoute component={Stop} />
+      </Route>
+      <Route path="stops/:id" component={Stop}/>
+    </Router>
+
+
+  )
+
 }
 
 export default App
