@@ -27,6 +27,7 @@ describe('show page test', () => {
       expect(component.find('.name')).toBePresent()
       expect(component.state('stop')).toEqual({ id:1, name:"El Greco",created_at:"2019-04-22T18:53:17.323Z",updated_at:"2019-04-22T18:53:17.323Z" });
       expect(component.find('.name').text()).to.equal('El Greco')
+      done()
     },0)
   });
 });
