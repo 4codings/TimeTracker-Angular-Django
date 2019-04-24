@@ -21,12 +21,13 @@ describe('show page test', () => {
 
   afterEach(() => fetchMock.restore)
 
-  it('should show labels, fetch data from api and present', () => {
+  it('should show labels, fetch data from api and present', (done) => {
     setTimeout(() => {
       expect(component.find('.id')).toBePresent()
       expect(component.find('.name')).toBePresent()
       expect(component.state('stop')).toEqual({ id:1, name:"El Greco",created_at:"2019-04-22T18:53:17.323Z",updated_at:"2019-04-22T18:53:17.323Z" });
-      expect(component.find('.name').text()).to.equal('El Greco')
+      
+      expect(component.find('.name').text()).toEqual("Name: El Greco")
       done()
     },0)
   });
