@@ -21,7 +21,7 @@ describe('show page test', () => {
 
   afterEach(() => fetchMock.restore)
 
-  it('should show labels, fetch data from api and present', () => {
+  it('should show labels, fetch data from api and present', (done) => {
     setTimeout(() => {
       expect(component.find('.id')).toBePresent()
       expect(component.find('.name')).toBePresent()
@@ -31,3 +31,11 @@ describe('show page test', () => {
     },0)
   });
 });
+//
+// it('renders a list item for each item returned from the api call', (done) => {
+//    setTimeout(() => {
+//      expect(wrapper.find('li').length).toEqual(tasks.length)
+//      expect(wrapper.find('li').text()).toEqual(tasks[0].title)
+//      done()
+//    }, 0)
+//  })
