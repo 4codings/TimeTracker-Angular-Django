@@ -12,7 +12,6 @@ RSpec.describe Api::V1::StopsController, type: :controller do
     it "returns the correct stop name" do
       new_stop = Stop.create(name: "Porter")
       get :show, params: {id: new_stop.id}
-      sleep(1)
       parsed = JSON.parse(response.body)
       expect(parsed["name"]).to eq("Porter")
     end
