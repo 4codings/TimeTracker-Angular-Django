@@ -9,6 +9,8 @@ class Stop extends React.Component {
   }
 
   componentDidMount() {
+    // debugger
+    let review= this.props.params
     let stop_id = this.props.params.id
     fetch(`/api/v1/stops/${stop_id}`)
       .then(response => {
@@ -23,6 +25,7 @@ class Stop extends React.Component {
         .then(response => response.json())
         .then(body => {
           console.log(body)
+
           this.setState({stop: body})
         })
         .catch(error => console.error(`Error in fetch: ${error.message}`));

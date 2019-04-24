@@ -5,6 +5,7 @@ class StopsController < ApplicationController
 
   def show
     @stop=Stop.find(params[:id])
+    @review=@stop.reviews
   end
 
 end
