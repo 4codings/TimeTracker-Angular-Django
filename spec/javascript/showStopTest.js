@@ -21,7 +21,7 @@ describe('show page test', () => {
 
   afterEach(() => fetchMock.restore)
 
-  it('should show labels, fetch data from api and present', (done) => {
+  it('should show labels, fetch data from api and present', () => {
     setTimeout(() => {
       expect(component.find('.id')).toBePresent()
       expect(component.find('.name')).toBePresent()
