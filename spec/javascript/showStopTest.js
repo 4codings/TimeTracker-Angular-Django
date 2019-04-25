@@ -26,6 +26,10 @@ describe('show page test', () => {
 
   afterEach(() => fetchMock.restore)
 
+  it('should render a Stop Component', () => {
+   expect(component.find(Stop)).toBePresent();
+  });
+
   it('should show labels, fetch data from api and present', (done) => {
     setTimeout(() => {
       expect(component.find('.id')).toBePresent()

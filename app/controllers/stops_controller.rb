@@ -7,6 +7,7 @@ class StopsController < ApplicationController
 
   def show
     @stop=Stop.find(params[:id])
+    render "static_views/index"
   end
 
   def new

@@ -6,9 +6,6 @@ import Stop from './Stop'
 export const App = (props) => {
   return (
     <Router history={browserHistory}>
-      <Route path='/' component={Stop}>
-        <IndexRoute component={Stop} />
-      </Route>
       <Route path="stops/:id" component={Stop}/>
     </Router>
   )
