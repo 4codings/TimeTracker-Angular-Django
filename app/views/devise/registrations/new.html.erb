@@ -5,14 +5,13 @@
 
   <div class="field">
     <%= f.label :user_name %><br />
-    <%= f.user_name_field :user_name, autofocus: true, autocomplete: "Username" %>
+    <%= f.text_field :user_name, autofocus: true, autocomplete: "Username" %>
   </div>
 
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
-
 
   <div class="field">
     <%= f.label :password %>
