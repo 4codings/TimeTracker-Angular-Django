@@ -1,4 +1,5 @@
 class StopsController < ApplicationController
+  before_action :authorize_user, except: [:index, :show]
 
   def index
     @stops=Stop.all
@@ -26,6 +27,12 @@ class StopsController < ApplicationController
   private
   def stop_params
     params.require(:stop).permit(:name)
+  end
+
+  def authorize_user
+    if !user_signed_in? || !current_user.admin?
+      raise ActionController::RoutingError.new("Not Found")
+    end
   end
 
 end
