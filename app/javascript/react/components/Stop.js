@@ -1,11 +1,12 @@
 import React from 'react';
+import Review from './Review'
 
 class Stop extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       stop: {},
-      reviews: {}
+      reviews: []
 
     }
   }
@@ -27,20 +28,28 @@ class Stop extends React.Component {
         })
         .then(response => response.json())
         .then(body => {
-          this.setState({stop: body.stop})
-          this.setState({reviews: body.reviews})
+
+          this.setState({stop: body.stop,
+            reviews: body.reviews})
+
         })
         .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   render(){
-     debugger
-    let review_list;
-    // this.state.reviews.forEach((review) => {
-    //   console.log(review)
-    //   review_list += review.rating
-    // })
+    let review_rating=[]
+    let body = []
+
+    if (this.state.reviews.length > 0 ) {
+      this.state.reviews.forEach((review) => {
+        body.push(<Review
+          key = {review.id}
+          review = {review}/>)
+      })
+    }
+
     return(
+
       <div>
         <div className="id">
           Id: {this.state.stop.id}
@@ -49,15 +58,7 @@ class Stop extends React.Component {
           Name: {this.state.stop.name}
         </div>
         <div className="reviews">
-      
-        </div>
-        <div>
-          <div>
-            Rating: {this.state.reviews.rating}
-          </div>
-          <div>
-            Review: {this.state.reviews.body}
-          </div>
+          {body}
         </div>
       </div>
     )
