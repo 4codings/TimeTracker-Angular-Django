@@ -6,7 +6,7 @@ const Review = props => {
       <div className="rating">
         Rating: {props.review.rating}
       </div>
-      <div className="name">
+      <div className="review_body">
         Body: {props.review.body}
       </div>
       <hr/>

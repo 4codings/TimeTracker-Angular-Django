@@ -7,11 +7,8 @@ class Stop extends React.Component {
     this.state = {
       stop: {},
       reviews: []
-
     }
   }
-
-
 
   componentDidMount() {
 

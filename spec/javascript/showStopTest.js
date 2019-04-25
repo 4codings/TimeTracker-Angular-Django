@@ -3,20 +3,47 @@ import fetchMock from 'fetch-mock'
 
 import Stop from '../../app/javascript/react/components/Stop'
 
-describe('show page test', () => {
+fdescribe('show page test', () => {
   let component;
 
   beforeEach(() => {
-    let stop = {
-      "id":1,
-      "name":"El Greco",
-      "created_at":"2019-04-22T18:53:17.323Z",
-      "updated_at":"2019-04-22T18:53:17.323Z"
+    let body = {
+      "stop": {
+        "id": 1,
+        "name": "Edward Hopper",
+        "created_at": "2019-04-23T16:43:36.475Z",
+        "updated_at": "2019-04-23T16:43:36.475Z"
+      },
+      "reviews": [
+        {
+          "id": 1,
+          "rating": 2,
+          "body": "not enough pasta, too much sauce",
+          "stop_id": 1,
+          "created_at": "2019-04-24T19:20:15.921Z",
+          "updated_at": "2019-04-24T19:20:15.921Z"
+        },
+        {
+          "id": 3,
+          "rating": 5,
+          "body": "Best stop ever",
+          "stop_id": 1,
+          "created_at": "2019-04-24T20:44:18.854Z",
+          "updated_at": "2019-04-24T20:44:18.854Z"
+        },
+        {
+          "id": 4,
+          "rating": 3,
+          "body": "Don't stop here",
+          "stop_id": 1,
+          "created_at": "2019-04-24T20:45:34.178Z",
+          "updated_at": "2019-04-24T20:45:34.178Z"
+        }
+      ]
     }
-
     fetchMock.get('/api/v1/stops/1', {
       status: 200,
-      body: stop
+      body: body
     });
 
     component = mount(
@@ -35,12 +62,50 @@ describe('show page test', () => {
       expect(component.find('.id')).toBePresent()
       expect(component.find('.name')).toBePresent()
       expect(component.state('stop')).toEqual({
-        id:1,
-        name:"El Greco",
-        created_at:"2019-04-22T18:53:17.323Z",
-        updated_at:"2019-04-22T18:53:17.323Z"
+        "id": 1,
+        "name": "Edward Hopper",
+        "created_at": "2019-04-23T16:43:36.475Z",
+        "updated_at": "2019-04-23T16:43:36.475Z"
       });
-      expect(component.find('.name').text()).toEqual("Name: El Greco")
+      expect(component.find('.name').text()).toEqual("Name: Edward Hopper")
+      done()
+    },0)
+  });
+
+  it('should show review data', (done) => {
+    setTimeout(() => {
+      expect(component.find('.reviews')).toBePresent()
+      expect(component.state('reviews')).toEqual(
+        [
+          {
+            "id": 1,
+            "rating": 2,
+            "body": "not enough pasta, too much sauce",
+            "stop_id": 1,
+            "created_at": "2019-04-24T19:20:15.921Z",
+            "updated_at": "2019-04-24T19:20:15.921Z"
+          },
+          {
+            "id": 3,
+            "rating": 5,
+            "body": "Best stop ever",
+            "stop_id": 1,
+            "created_at": "2019-04-24T20:44:18.854Z",
+            "updated_at": "2019-04-24T20:44:18.854Z"
+          },
+          {
+            "id": 4,
+            "rating": 3,
+            "body": "Don't stop here",
+            "stop_id": 1,
+            "created_at": "2019-04-24T20:45:34.178Z",
+            "updated_at": "2019-04-24T20:45:34.178Z"
+          }
+        ]
+      );
+
+      expect(component.find('.rating').first().text()).toEqual('Rating: 2')
+      expect(component.find('.review_body').first().text()).toEqual('Body: not enough pasta, too much sauce')
       done()
     },0)
   });
