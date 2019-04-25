@@ -1,6 +1,22 @@
 require 'rails_helper'
 
-feature 'user visits new stop page'  do
+feature 'valid user visits new stop page'  do
+
+  before(:each) do
+    user = User.create(
+      user_name: "HappyPath",
+      email: "happy@path.com",
+      password: "password",
+      admin: true
+    )
+
+    visit new_user_session_path
+    fill_in 'User name', with: user.user_name
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+
+    click_button 'Log in'
+  end
 
   scenario 'user sees stop form' do
     visit new_stop_path
