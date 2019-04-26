@@ -4,8 +4,8 @@ class Api::V1::StopsController < ApplicationController
 
     @stop = Stop.find(params[:id])
     @review = @stop.reviews
-    response = { :stop => @stop, :reviews => @review }
-    render :json => response
+    response = { stop: @stop, reviews: @review }
+    render json: response
 
   end
 

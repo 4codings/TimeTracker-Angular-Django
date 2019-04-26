@@ -2,8 +2,9 @@ import { shallow } from 'enzyme'
 import fetchMock from 'fetch-mock'
 
 import Stop from '../../app/javascript/react/components/Stop'
+import Review from '../../app/javascript/react/components/Review'
 
-fdescribe('show page test', () => {
+describe('show page test', () => {
   let component;
 
   beforeEach(() => {
@@ -72,7 +73,30 @@ fdescribe('show page test', () => {
     },0)
   });
 
-  it('should show review data', (done) => {
+  it('should render a Review Component', (done) => {
+   setTimeout(() => {
+     expect(component.find(Review)).toBePresent();
+     done()
+   },0)
+  });
+
+  it('should show pass the correct props to a review component', (done) => {
+    setTimeout(() => {
+      expect(component.find(Review).first().props().review).toEqual(
+        {
+          "id": 1,
+          "rating": 2,
+          "body": "not enough pasta, too much sauce",
+          "stop_id": 1,
+          "created_at": "2019-04-24T19:20:15.921Z",
+          "updated_at": "2019-04-24T19:20:15.921Z"
+        }
+      )
+      done()
+    },0)
+  });
+
+  it('should display review data', (done) => {
     setTimeout(() => {
       expect(component.find('.reviews')).toBePresent()
       expect(component.state('reviews')).toEqual(

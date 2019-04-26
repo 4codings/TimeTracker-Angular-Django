@@ -2,9 +2,7 @@ Rails.application.routes.draw do
   root 'homes#index'
   devise_for :users
 
-  resources :stops, only: [:index, :show, :new, :create] do
-    resources :reviews, only: [:new, :create]
-  end
+  resources :stops, only: [:index, :show, :new, :create]
 
   namespace :api do
     namespace :v1 do

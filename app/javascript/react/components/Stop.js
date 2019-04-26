@@ -32,14 +32,16 @@ class Stop extends React.Component {
   }
 
   render(){
-    let review_rating=[]
-    let body = []
 
+    let body;
     if (this.state.reviews.length > 0 ) {
-      this.state.reviews.forEach((review) => {
-        body.push(<Review
+      body = this.state.reviews.map((review) => {
+        return (
+          <Review
           key = {review.id}
-          review = {review}/>)
+          review = {review}
+          />
+        )
       })
     }
 
