@@ -6,9 +6,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :stops, only: [:show] do
-        resources :reviews, only: [:show]
-      end
+      resources :stops, only: [:show]
     end
   end
 end
