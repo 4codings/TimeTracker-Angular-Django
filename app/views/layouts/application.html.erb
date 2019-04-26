@@ -1,34 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
   <title>TheMorningT</title>
+
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <%= stylesheet_link_tag 'application', media: 'all' %>
 
+  <title>
+    <%= content_for?(:title) ? yield(:title) : "Untitled" %>
+  </title>
 
-
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
 </head>
+
 <body>
 
-  <nav class="top-bar">
-    <ul class="title-area">
-      <li class="name">
-        <h1><a href="/">TheMorningT</a></h1>
-      </li>
-    </ul>
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <ul class="dropdown menu" data-dropdown-menu>
+        <li class="menu-text">The Morning T</li>
+        <li>
+          <%= link_to "All Stops", stops_path %>
+        </li>
+      </ul>
+    </div>
 
-    <section class="top-bar-section">
-      <ul class="right">
+    <div class="top-bar-right">
+      <ul class="menu">
         <%- if current_user -%>
-          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+          <li>
+            <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+          </li>
         <%- else -%>
-          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-          <li><%= link_to 'Sign In', new_user_session_path %></li>
+          <li>
+            <%= link_to 'Sign Up', new_user_registration_path %>
+          </li>
+          <li>
+            <%= link_to 'Sign In', new_user_session_path %>
+          </li>
         <%- end -%>
       </ul>
-    </section>
-  </nav>
+    </div>
+
+  </div>
+
+
 
   <%- flash.each do |key, value| -%>
     <div class="flash flash-<%= key %>">
@@ -42,11 +62,15 @@
 
   <%- if Rails.env.development? || Rails.env.test? -%>
     <%= javascript_tag do %>
-      window.railsEnv = '<%= Rails.env %>'
+    window.railsEnv = '
+    <%= Rails.env %>'
     <%- end -%>
   <%- end -%>
+
   <%= javascript_pack_tag 'application' %>
 
   <%= yield :extra_footer %>
-</body>
+
+  </body>
+
 </html>

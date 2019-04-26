@@ -1,6 +1,32 @@
 require 'rails_helper'
 
-feature 'user visits new stop page'  do
+feature 'invalid user is blocked from new stop page'  do
+
+  invalid_user = User.create(
+    user_name: "SaddestPath",
+    email: "sad@path.com",
+    password: "password"
+  )
+
+  scenario 'user sees not found error' do
+    sign_in invalid_user
+    expect{visit new_stop_path}.to raise_error("Not Found")
+  end
+
+end
+
+feature 'valid user visits new stop page'  do
+
+  before(:each) do
+    DatabaseCleaner.clean_with(:deletion)
+    valid_user = User.create!(
+      user_name: "HappyPath",
+      email: "happy@path.com",
+      password: "password",
+      admin: true
+    )
+    sign_in valid_user
+  end
 
   scenario 'user sees stop form' do
     visit new_stop_path
