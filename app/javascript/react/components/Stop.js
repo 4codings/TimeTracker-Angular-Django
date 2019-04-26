@@ -11,7 +11,6 @@ class Stop extends React.Component {
   }
 
   componentDidMount() {
-
     let stop_id = this.props.params.id
     fetch(`/api/v1/stops/${stop_id}`)
     .then(response => {
@@ -32,7 +31,6 @@ class Stop extends React.Component {
   }
 
   render(){
-
     let body;
     if (this.state.reviews.length > 0 ) {
       body = this.state.reviews.map((review) => {
@@ -46,7 +44,6 @@ class Stop extends React.Component {
     }
 
     return(
-
       <div>
         <div className="id">
           ID: {this.state.stop.id}
