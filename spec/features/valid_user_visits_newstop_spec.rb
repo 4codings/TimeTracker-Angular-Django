@@ -1,9 +1,24 @@
 require 'rails_helper'
+include Devise::Controllers::Helpers
+
+feature 'invalid user is blocked from new stop page'  do
+
+  invalid = User.create(
+    user_name: "SadPath",
+    email: "sad@path.com",
+    password: "password"
+  )
+
+  scenario 'user sees not found error' do
+    expect{visit new_stop_path}.to raise_error("Not Found")
+  end
+
+end
 
 feature 'valid user visits new stop page'  do
 
   before(:each) do
-    user = User.create(
+    @user = User.create(
       user_name: "HappyPath",
       email: "happy@path.com",
       password: "password",
@@ -11,10 +26,9 @@ feature 'valid user visits new stop page'  do
     )
 
     visit new_user_session_path
-    fill_in 'User name', with: user.user_name
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-
+    fill_in 'User name', with: @user.user_name
+    fill_in 'Email', with: @user.email
+    fill_in 'Password', with: @user.password
     click_button 'Log in'
   end
 
