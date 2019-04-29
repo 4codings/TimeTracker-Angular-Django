@@ -1,19 +1,16 @@
-
+<h4>Review Administration Page</h4>
 
 <% @reviews.each do |review| %>
   <div class="media-object">
     <div class="media-object-section">
+      <%= form_tag "/admin/review/#{review.id}", method: "post" do %>
+       <%= submit_tag "Delete Review" %>
+      <% end %>
     </div>
     <div class="media-object-section">
       <h4><%= review.rating %> stars </h4>
       <p><%= review.body %></p>
     </div>
   </div>
-  <div class="button">
-    <%=
-      button_to 'Delete This Review',
-      {controller: "admin", action: "review", id: review.id},
-      method: :delete, data: {confirm: "Are you sure?"}
-    %>
-  </div>
+
 <% end %>

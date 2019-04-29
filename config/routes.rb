@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :stops, only: [:index, :show, :new, :create]
 
   get 'admin/reviews', to: 'admin#reviews'
-  delete 'admin/review', to: 'admin#delete_review'
+  post 'admin/review/:id', to: 'admin#delete_review'
 
   namespace :api do
     namespace :v1 do

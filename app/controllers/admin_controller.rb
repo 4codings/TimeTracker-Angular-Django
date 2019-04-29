@@ -6,7 +6,13 @@ class AdminController < ApplicationController
   end
 
   def delete_review
-    Review.find(params[:id]).delete
+    if Review.find(params[:id]).delete
+      flash[:notice] = "Review deleted"
+      redirect_to '/admin/reviews'
+    else
+      flash.now[:error] = Review.errors.full_messages.join(", ")
+      render action: :reviews
+    end
   end
 
   private
