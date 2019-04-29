@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
   resources :stops, only: [:index, :show, :new, :create]
 
+  get 'admin/reviews', to: 'admin#reviews'
+  post 'admin/review/:id', to: 'admin#delete_review'
+
   namespace :api do
     namespace :v1 do
       resources :stops, only: [:show]
