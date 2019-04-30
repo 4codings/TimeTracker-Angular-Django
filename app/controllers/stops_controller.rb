@@ -8,7 +8,6 @@ class StopsController < ApplicationController
   def show
     @stop=Stop.find(params[:id])
     @review=Review.new
-    # binding.pry
   end
 
   def new
