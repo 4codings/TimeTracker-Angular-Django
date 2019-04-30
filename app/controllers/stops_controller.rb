@@ -6,7 +6,6 @@ class StopsController < ApplicationController
   end
 
   def show
-    render "static_views/index"
   end
 
   def new
