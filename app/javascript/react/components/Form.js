@@ -28,24 +28,28 @@ class Form extends Component {
   }
 
   render(){
-    console.log(this.state)
     return(
-      <form className="newReviewForm" onSubmit = {this.handleSubmit}>
-        <TextField
-          content  = {this.state.rating}
-          label = "Rating"
-          name = "rating"
-          handleChange = {this.handleRatingChange}
-        />
+      <div className="media-object">
+        <div className="media-object-section">
+        <h3>Add a new review</h3>
+          <form className="newReviewForm" onSubmit = {this.handleSubmit}>
+            <TextField
+              content  = {this.state.rating}
+              label = "Rating"
+              name = "rating"
+              handleChange = {this.handleRatingChange}
+            />
 
-        <TextField
-          content  = {this.state.body}
-          label = "Review"
-          name = "body"
-          handleChange = {this.handleBodyChange}
-        />
-        <input type="submit" value= "Submit"/>
-      </form>
+            <TextField
+              content  = {this.state.body}
+              label = "Review"
+              name = "body"
+              handleChange = {this.handleBodyChange}
+            />
+            <input type="submit" value= "Submit"/>
+          </form>
+        </div>
+      </div>
     )
   }
 }
