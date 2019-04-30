@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     resources :reviews, only: [:show, :create]
   end
 
+  get 'admin/reviews', to: 'admin#reviews'
+  post 'admin/review/:id', to: 'admin#delete_review'
+
   namespace :api do
     namespace :v1 do
       resources :stops, only: [:show] do
