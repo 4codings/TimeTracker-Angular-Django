@@ -78,11 +78,8 @@ class Stop extends React.Component {
     }
     return(
       <div className="stopWrapper">
-        <div className="id">
-          ID: {this.state.stop.id}
-        </div>
         <div className="name">
-          Name: {this.state.stop.name}
+          {this.state.stop.name}
         </div>
         <div className="errors">
           {this.state.errors}

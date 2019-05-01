@@ -6,7 +6,7 @@ class Api::V1::ReviewsController < ApplicationController
     if @review.save
       render json: { stop: @stop, reviews: @stop.reviews, errors: "" }
     else
-      @errors = @review.errors.full_messages.join(', ')
+      @errors = @review.errors.full_messages.join(', ❌').prepend('❌')
       render json: { stop: @stop, reviews: @stop.reviews, errors: @errors }
     end
   end

@@ -4,13 +4,20 @@ const Review = props => {
   return(
     <div className="media-object">
       <div className="media-object-section">
-        <div className="rating">
-          Rating: {props.review.rating}
+        <div className="review">
+          <div className="review_field">
+            <p className="reviewLabel">
+              Rating:
+            </p>
+            {props.review.rating}
+          </div>
+          <div className="review_field">
+            <p className="reviewLabel">
+              Review:
+            </p>
+             {props.review.body}
+          </div>
         </div>
-        <div className="review_body">
-          Body: {props.review.body}
-        </div>
-        <hr/>
       </div>
     </div>
   )

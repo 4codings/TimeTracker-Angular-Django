@@ -20,7 +20,7 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
       expect(response.status).to eq(200)
       expect(returned_json).to be_kind_of(Hash)
       expect(returned_json).to_not be_kind_of(Array)
-      expect(JSON.parse(response.body)['errors']).to eq("Rating can't be blank, Rating is not included in the list")
+      expect(JSON.parse(response.body)['errors']).to eq("❌Rating can't be blank, ❌Rating is not included in the list")
     end
   end
 end

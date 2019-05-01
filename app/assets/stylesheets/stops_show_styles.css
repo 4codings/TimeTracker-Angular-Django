@@ -1,0 +1,39 @@
+.errors{
+  font-weight: bold;
+  padding-left:15px;
+}
+
+.name{
+  font-size: 6em;
+  padding-left:15px;
+}
+
+.newReviewForm{
+  border: 1px solid #e2e2e2;
+  box-shadow: 10px 10px 5px #e2e2e2;
+  padding: 1em 5em 1em 5em;
+  width: 30vw
+}
+
+.review{
+  padding: 1em 5em 1em 5em;
+  width: 30vw;
+  border: 1px solid #e2e2e2;
+  box-shadow: 10px 10px 5px #e2e2e2;
+  background-color: #d1d1d1
+}
+
+.reviewLabel{
+  font-weight: bold;
+  margin: 0 5px 0 5px
+}
+
+.review_field{
+  display: flex
+}
+
+.t-logo{
+  max-width: 100;
+  max-height: auto
+
+}

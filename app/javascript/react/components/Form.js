@@ -31,8 +31,8 @@ class Form extends Component {
     return(
       <div className="media-object">
         <div className="media-object-section">
-        <h3>Add a new review</h3>
           <form className="newReviewForm" onSubmit = {this.handleSubmit}>
+            <h3>Add a new review</h3>
             <TextField
               content  = {this.state.rating}
               label = "Rating"
