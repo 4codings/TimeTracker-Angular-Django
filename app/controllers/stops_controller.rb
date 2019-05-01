@@ -6,8 +6,6 @@ class StopsController < ApplicationController
   end
 
   def show
-    @stop=Stop.find(params[:id])
-    @review=Review.new
   end
 
   def new
