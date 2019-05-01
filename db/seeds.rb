@@ -12,11 +12,13 @@ end
     email: "#{Faker::Alphanumeric.alpha 8}@happypath.com",
     password: "password"
   )
-  5.times do
+  2.times do
     Review.create(
       stop_id: Faker::Number.between(1, 10),
       rating: Faker::Number.between(1, 5),
       body: Faker::TvShows::GameOfThrones.quote,
+      up_votes: 0,
+      down_votes: 0,
       user_id: example.id
     )
   end

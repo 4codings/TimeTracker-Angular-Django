@@ -21,6 +21,9 @@ describe('show page test', () => {
           "rating": 2,
           "body": "not enough pasta, too much sauce",
           "stop_id": 1,
+          "up_votes": 1,
+          "down_votes": 1,
+          "user_id": 1,
           "created_at": "2019-04-24T19:20:15.921Z",
           "updated_at": "2019-04-24T19:20:15.921Z"
         },
@@ -29,6 +32,9 @@ describe('show page test', () => {
           "rating": 5,
           "body": "Best stop ever",
           "stop_id": 1,
+          "up_votes": 3,
+          "down_votes": 3,
+          "user_id": 3,
           "created_at": "2019-04-24T20:44:18.854Z",
           "updated_at": "2019-04-24T20:44:18.854Z"
         },
@@ -37,6 +43,9 @@ describe('show page test', () => {
           "rating": 3,
           "body": "Don't stop here",
           "stop_id": 1,
+          "up_votes": 4,
+          "down_votes": 4,
+          "user_id": 4,
           "created_at": "2019-04-24T20:45:34.178Z",
           "updated_at": "2019-04-24T20:45:34.178Z"
         }
@@ -88,6 +97,9 @@ describe('show page test', () => {
           "rating": 2,
           "body": "not enough pasta, too much sauce",
           "stop_id": 1,
+          "up_votes": 1,
+          "down_votes": 1,
+          "user_id": 1,
           "created_at": "2019-04-24T19:20:15.921Z",
           "updated_at": "2019-04-24T19:20:15.921Z"
         }
@@ -106,6 +118,9 @@ describe('show page test', () => {
             "rating": 2,
             "body": "not enough pasta, too much sauce",
             "stop_id": 1,
+            "up_votes": 1,
+            "down_votes": 1,
+            "user_id": 1,
             "created_at": "2019-04-24T19:20:15.921Z",
             "updated_at": "2019-04-24T19:20:15.921Z"
           },
@@ -114,6 +129,9 @@ describe('show page test', () => {
             "rating": 5,
             "body": "Best stop ever",
             "stop_id": 1,
+            "up_votes": 3,
+            "down_votes": 3,
+            "user_id": 3,
             "created_at": "2019-04-24T20:44:18.854Z",
             "updated_at": "2019-04-24T20:44:18.854Z"
           },
@@ -122,6 +140,9 @@ describe('show page test', () => {
             "rating": 3,
             "body": "Don't stop here",
             "stop_id": 1,
+            "up_votes": 4,
+            "down_votes": 4,
+            "user_id": 4,
             "created_at": "2019-04-24T20:45:34.178Z",
             "updated_at": "2019-04-24T20:45:34.178Z"
           }

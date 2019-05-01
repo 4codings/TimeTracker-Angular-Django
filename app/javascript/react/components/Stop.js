@@ -38,8 +38,6 @@ class Stop extends React.Component {
           <Review
           key = {review.id}
           review = {review}
-          upVotes = {review.up_votes}
-          downVotes = {review.down_votes}
           />
         )
       })

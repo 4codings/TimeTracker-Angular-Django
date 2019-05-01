@@ -4,8 +4,8 @@ class Review extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      upVotes: this.props.review.upVotes,
-      downVotes: this.props.review.downVotes,
+      upVotes: this.props.review.up_votes,
+      downVotes: this.props.review.down_votes,
       currentVote: null,
       thumbsUp: "",
       thumbsDown: ""
@@ -37,7 +37,6 @@ class Review extends React.Component {
   }
 
   handleUpdateVote(event) {
-    console.log(event)
     fetch("/api/v1/votes",{
       method: 'POST',
       headers: {
@@ -89,7 +88,7 @@ class Review extends React.Component {
     return(
       <div>
         <div className="rev_id">
-          Rating: {this.props.review.id}
+          Review ID: {this.props.review.id}
         </div>
         <div className="rating">
           Rating: {this.props.review.rating}
@@ -98,10 +97,10 @@ class Review extends React.Component {
           Body: {this.props.review.body}
         </div>
         <div id="up" onClick={this.handleUpdateVote}>
-          <i className={`fa ${this.state.thumbsUp} fa-thumbs-up`}/> {this.state.upVotes}
+          <i className={`fa ${this.state.thumbsUp} fa-thumbs-up`}/>  Up votes: {this.state.upVotes}
         </div>
         <div id="down" onClick={this.handleUpdateVote}>
-          <i className={`fa ${this.state.thumbsDown} fa-thumbs-down`}/> {this.state.downVotes}
+          <i className={`fa ${this.state.thumbsDown} fa-thumbs-down`}/>  Down votes: {this.state.downVotes}
         </div>
         <hr/>
       </div>

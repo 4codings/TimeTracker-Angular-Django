@@ -31,7 +31,8 @@ feature 'valid user visits admin page'  do
     new_review = Review.create!(
       rating: 4,
       body: "test test",
-      stop_id: new_stop.id
+      stop_id: new_stop.id,
+      user_id: valid_user.id
     )
     sign_in valid_user
   end

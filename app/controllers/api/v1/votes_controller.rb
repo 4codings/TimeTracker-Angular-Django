@@ -1,7 +1,12 @@
 class Api::V1::VotesController < ApplicationController
 
   def show
-    vote = Review.find(params[:id]).votes.where(user_id: current_user.id)
+    if user_signed_in?
+      vote = Review.find(params[:id]).votes.where(user_id: current_user.id)
+    else
+      vote = []
+    end
+
     if vote == []
       @vote = nil
     else
@@ -12,13 +17,23 @@ class Api::V1::VotesController < ApplicationController
   end
 
   def create
-    if params[:vote] == "up"
-      vote = 1
-    else
-      vote = -1
+    current_review = Review.find(params[:review_id])
+
+    if !user_signed_in?
+      payload = render json: {
+        vote: 0,
+        upVotes: current_review[:up_votes],
+        downVotes: current_review[:down_votes]
+      }
+      return payload
     end
 
-    current_review = Review.find(params[:review_id])
+    if params[:vote] == "up"
+      click = 1
+    else
+      click = -1
+    end
+
     current_vote = Review.find(params[:review_id]).votes.where(user_id: current_user.id)[0]
 
     if !current_vote
@@ -29,24 +44,28 @@ class Api::V1::VotesController < ApplicationController
       )
     end
 
-    if vote == current_vote[:vote_value]
+    if click == current_vote[:vote_value]
       current_vote[:vote_value] = 0
-      if vote > 0
+      if click == 1
         current_review.decrement!(:up_votes)
-      elsif vote < 0
+      elsif click == -1
         current_review.decrement!(:down_votes)
       end
-    elsif vote > current_vote[:vote_value]
+    elsif click > current_vote[:vote_value]
       current_review.increment!(:up_votes)
-      current_review.decrement!(:down_votes) if current_vote[:vote_value] == -1
-      current_vote[:vote_value] = vote
+      if current_vote[:vote_value] == -1
+        current_review.decrement!(:down_votes)
+      end
+      current_vote[:vote_value] = click
     else
       current_review.increment!(:down_votes)
-      current_review.decrement!(:up_votes) if current_vote[:vote_value] == 1
-      current_vote[:vote_value] = vote
+      if current_vote[:vote_value] == 1
+        current_review.decrement!(:up_votes)
+      end
+      current_vote[:vote_value] = click
     end
 
-# DO WE NEED TO DO A SAVE TO WRITE ANY OF THIS TO DB?
+    current_vote.save!
 
     render json: {
       vote: current_vote[:vote_value],
