@@ -8,5 +8,4 @@ class User < ApplicationRecord
 
   has_many :votes
   has_many :reviews
-  has_many :votes, through :reviews
 end

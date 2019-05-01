@@ -3,7 +3,7 @@ class Api::V1::StopsController < ApplicationController
   def show
 
     @stop = Stop.find(params[:id])
-    @review = @stop.reviews
+    @review = @stop.reviews  
     response = { stop: @stop, reviews: @review }
     render json: response
 
