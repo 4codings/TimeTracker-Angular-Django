@@ -1,13 +1,10 @@
 .errors{
   font-weight: bold;
+  padding-left:15px;
 }
 
 .name{
   font-size: 6em;
-  padding-left:15px;
-}
-
-.errors{
   padding-left:15px;
 }
 
