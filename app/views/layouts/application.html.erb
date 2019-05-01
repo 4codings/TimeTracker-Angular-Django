@@ -18,25 +18,19 @@
 </head>
 
 <body>
-
   <div class="top-bar">
     <div class="top-bar-left">
       <ul class="dropdown menu">
-        <li class="menu-text">The Morning T</li>
+        <%= image_tag'mbta-secondary-logo-circle.png', style: 'height:30px; width:30px;' %>
+        <div className = "logo">
+          <li class="menu-text">The Morning T</li>
+        </div>
         <li>
           <%= link_to "All Stops", stops_path %>
         </li>
       </ul>
     </div>
-
     <div class="top-bar-right">
-      <div class="t-logo">
-      <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="50" height="50">
-      <circle cx="25" cy="25" r="23.9" stroke="#000" stroke-width="2.2" fill="#fff"/>
-      <path d="M92,138.5h316v79.5h-118.25v194h-79.5v-194h-118.25z"/>
-      </svg>
-      </div>
-
       <ul class="menu">
         <%- if current_user -%>
           <li>
@@ -52,10 +46,7 @@
         <%- end -%>
       </ul>
     </div>
-
   </div>
-
-
 
   <%- flash.each do |key, value| -%>
     <div class="flash flash-<%= key %>">
@@ -68,7 +59,6 @@
     <div class="cell small-8"><%= yield %></div>
   </div>
 
-
   <%= javascript_include_tag 'application' %>
 
   <%- if Rails.env.development? || Rails.env.test? -%>
@@ -78,9 +68,6 @@
   <%- end -%>
 
   <%= javascript_pack_tag 'application' %>
-
   <%= yield :extra_footer %>
-
   </body>
-
 </html>
