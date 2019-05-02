@@ -56,6 +56,22 @@ describe('show page test', () => {
       body: body
     });
 
+    let voteBody = {vote: 1}
+    fetchMock.get('/api/v1/votes/1', {
+      status: 200,
+      body: voteBody
+    });
+
+    fetchMock.get('/api/v1/votes/3', {
+      status: 200,
+      body: voteBody
+    });
+
+    fetchMock.get('/api/v1/votes/4', {
+      status: 200,
+      body: voteBody
+    });
+
     component = mount(
       <Stop params={{"id":1}}/>
     )
@@ -67,17 +83,17 @@ describe('show page test', () => {
    expect(component.find(Stop)).toBePresent();
   });
 
-  fit('should show labels, fetch data from api and present', (done) => {
+  it('should show labels, fetch data from api and present', (done) => {
     setTimeout(() => {
       expect(component.find('.name')).toBePresent()
-      
+
       expect(component.state('stop')).toEqual({
         "id": 1,
         "name": "Edward Hopper",
         "created_at": "2019-04-23T16:43:36.475Z",
         "updated_at": "2019-04-23T16:43:36.475Z"
       });
-
+      // debugger
       expect(component.text()).toMatch(/Edward Hopper/)
       done()
     },0)
@@ -149,8 +165,8 @@ describe('show page test', () => {
         ]
       );
 
-      expect(component.find('.rating').first().text()).toEqual('Rating: 2')
-      expect(component.find('.review_body').first().text()).toEqual('Body: not enough pasta, too much sauce')
+      expect(component.find('.review').first().text()).toMatch(/Rating:2/)
+      expect(component.find('.review').first().text()).toMatch(/not enough pasta, too much sauce/)
       done()
     },0)
   });
