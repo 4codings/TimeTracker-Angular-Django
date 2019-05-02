@@ -21,6 +21,9 @@ ActiveRecord::Schema.define(version: 2019_05_01_191910) do
     t.bigint "stop_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "up_votes"
+    t.integer "down_votes"
+    t.integer "user_id"
     t.index ["stop_id"], name: "index_reviews_on_stop_id"
   end
 
@@ -45,4 +48,15 @@ ActiveRecord::Schema.define(version: 2019_05_01_191910) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.integer "vote_value"
+    t.bigint "review_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["review_id"], name: "index_votes_on_review_id"
+    t.index ["user_id"], name: "index_votes_on_user_id"
+  end
+
+  add_foreign_key "reviews", "users"
 end
