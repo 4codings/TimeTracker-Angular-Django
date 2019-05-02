@@ -102,9 +102,8 @@ describe('show page test', () => {
           "user_id": 1,
           "created_at": "2019-04-24T19:20:15.921Z",
           "updated_at": "2019-04-24T19:20:15.921Z"
-        }
-      )
-      done()
+        })
+        done()
     },0)
   });
 

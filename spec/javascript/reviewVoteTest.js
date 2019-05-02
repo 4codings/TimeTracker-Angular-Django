@@ -37,17 +37,19 @@ describe('vote component display', () => {
 
   afterEach(() => fetchMock.restore)
 
-  it('should display votes data', () => {
+  it('should display votes data', (done) => {
     setTimeout(() => {
       expect(component.text()).toMatch(/Up votes: 1/)
       expect(component.text()).toMatch(/Down votes: 1/)
+      done()
     },0)
   });
 
-  it('should display votes data', () => {
+  it('should display votes icons', (done) => {
     setTimeout(() => {
       expect(component.find(".fa-thumbs-up").exists()).toEqual(true)
       expect(component.find(".fa-thumbs-down").exists()).toEqual(true)
+      done()
     },0)
   });
 });
@@ -85,6 +87,23 @@ describe('vote behavior test', () => {
 
   afterEach(() => fetchMock.restore)
 
-// MOAR TESTS HERE
+  it('should display updated votes data and highlight', (done) => {
+    let clickBody = {
+      vote: 1,
+      upVotes: 1,
+      downVotes: 1
+    }
+    fetchMock.post('/api/v1/votes', {
+      status: 200,
+      body: clickBody
+    });
+
+    setTimeout(() => {
+      expect(component.text()).toMatch(/Up votes: 1/)
+      expect(component.text()).toMatch(/Down votes: 1/)
+      expect(component.find(".active").exists()).toEqual(true)
+      done()
+    },0)
+  });
 
 });
