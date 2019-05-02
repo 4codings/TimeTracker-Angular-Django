@@ -36,6 +36,9 @@
           <li>
             <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
           </li>
+          <%- if current_user[:profile_photo] != nil -%>
+            <%= image_tag("/uploads/user/profile_photo/#{current_user.id}/#{current_user.profile_photo.file.file.split("/")[-1]}") %>
+          <%- end -%>
         <%- else -%>
           <li>
             <%= link_to 'Sign Up', new_user_registration_path %>
