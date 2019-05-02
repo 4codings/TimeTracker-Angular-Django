@@ -25,8 +25,6 @@ class ProfilePhotoUploader < CarrierWave::Uploader::Base
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
 
-  # process :resize_to_limit => [500, nil]
-
   # Process files as they are uploaded:
   # process scale: [200, 300]
   #
