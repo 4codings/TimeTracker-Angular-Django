@@ -44,3 +44,8 @@
   font-size: 1.3rem;
   line-height: 1rem;
 }
+
+.l-pad {
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+}
