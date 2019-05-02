@@ -4,7 +4,7 @@
 }
 
 .name{
-  font-size: 6em;
+  font-size: 4em;
   padding-left:15px;
 }
 
@@ -12,15 +12,14 @@
   border: 1px solid #e2e2e2;
   box-shadow: 10px 10px 5px #e2e2e2;
   padding: 1em 5em 1em 5em;
-  width: 30vw
+  margin: 1rem;
 }
 
 .review{
   padding: 1em 5em 1em 5em;
-  width: 30vw;
   border: 1px solid #e2e2e2;
   box-shadow: 10px 10px 5px #e2e2e2;
-  background-color: #d1d1d1
+  background-color: #d1d1d1;
 }
 
 .reviewLabel{
@@ -35,5 +34,13 @@
 .t-logo{
   max-width: 100;
   max-height: auto
+}
 
+.media-object{
+  display: block;
+}
+
+.stop-index{
+  font-size: 1.3rem;
+  line-height: 1rem;
 }

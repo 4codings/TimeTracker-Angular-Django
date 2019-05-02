@@ -112,7 +112,6 @@ class Review extends React.Component {
       </div>
     )
   }
-
 }
 
 export default Review;
