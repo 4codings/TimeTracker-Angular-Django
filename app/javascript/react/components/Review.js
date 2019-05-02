@@ -86,23 +86,29 @@ class Review extends React.Component {
 
   render() {
     return(
-      <div>
-        <div className="rev_id">
-          Review ID: {this.props.review.id}
+      <div className="media-object">
+        <div className="media-object-section">
+          <div className="review">
+            <div className="review_field">
+              <p className="reviewLabel">
+                Rating:
+              </p>
+              {this.props.review.rating}
+            </div>
+            <div className="review_field">
+              <p className="reviewLabel">
+                Review:
+              </p>
+              {this.props.review.body}
+            </div>
+            <div id="up" onClick={this.handleUpdateVote}>
+              <i className={`fa ${this.state.thumbsUp} fa-thumbs-up`}/> Up votes: {this.state.upVotes}
+            </div>
+            <div id="down" onClick={this.handleUpdateVote}>
+              <i className={`fa ${this.state.thumbsDown} fa-thumbs-down`}/> Down votes: {this.state.downVotes}
+            </div>
+          </div>
         </div>
-        <div className="rating">
-          Rating: {this.props.review.rating}
-        </div>
-        <div className="review_body">
-          Body: {this.props.review.body}
-        </div>
-        <div id="up" onClick={this.handleUpdateVote}>
-          <i className={`fa ${this.state.thumbsUp} fa-thumbs-up`}/>  Up votes: {this.state.upVotes}
-        </div>
-        <div id="down" onClick={this.handleUpdateVote}>
-          <i className={`fa ${this.state.thumbsDown} fa-thumbs-down`}/>  Down votes: {this.state.downVotes}
-        </div>
-        <hr/>
       </div>
     )
   }

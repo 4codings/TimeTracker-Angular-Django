@@ -18,23 +18,27 @@
 </head>
 
 <body>
-
   <div class="top-bar">
     <div class="top-bar-left">
       <ul class="dropdown menu">
-        <li class="menu-text">The Morning T</li>
+        <%= image_tag'mbta-secondary-logo-circle.png', style: 'height:30px; width:30px;' %>
+        <div className = "logo">
+          <li class="menu-text">The Morning T</li>
+        </div>
         <li>
           <%= link_to "All Stops", stops_path %>
         </li>
       </ul>
     </div>
-
     <div class="top-bar-right">
       <ul class="menu">
         <%- if current_user -%>
           <li>
             <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
           </li>
+          <%- if current_user[:profile_photo] != nil -%>
+            <%= image_tag("/uploads/user/profile_photo/#{current_user.id}/#{current_user.profile_photo.file.file.split("/")[-1]}") %>
+          <%- end -%>
         <%- else -%>
           <li>
             <%= link_to 'Sign Up', new_user_registration_path %>
@@ -45,10 +49,7 @@
         <%- end -%>
       </ul>
     </div>
-
   </div>
-
-
 
   <%- flash.each do |key, value| -%>
     <div class="flash flash-<%= key %>">
@@ -61,7 +62,6 @@
     <div class="cell small-8"><%= yield %></div>
   </div>
 
-
   <%= javascript_include_tag 'application' %>
 
   <%- if Rails.env.development? || Rails.env.test? -%>
@@ -71,9 +71,6 @@
   <%- end -%>
 
   <%= javascript_pack_tag 'application' %>
-
   <%= yield :extra_footer %>
-
   </body>
-
 </html>

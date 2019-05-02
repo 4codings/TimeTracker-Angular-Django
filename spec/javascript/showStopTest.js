@@ -67,17 +67,18 @@ describe('show page test', () => {
    expect(component.find(Stop)).toBePresent();
   });
 
-  it('should show labels, fetch data from api and present', (done) => {
+  fit('should show labels, fetch data from api and present', (done) => {
     setTimeout(() => {
-      expect(component.find('.id')).toBePresent()
       expect(component.find('.name')).toBePresent()
+      
       expect(component.state('stop')).toEqual({
         "id": 1,
         "name": "Edward Hopper",
         "created_at": "2019-04-23T16:43:36.475Z",
         "updated_at": "2019-04-23T16:43:36.475Z"
       });
-      expect(component.find('.name').text()).toEqual("Name: Edward Hopper")
+
+      expect(component.text()).toMatch(/Edward Hopper/)
       done()
     },0)
   });
