@@ -45,7 +45,7 @@
             <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
           </li>
           <%- if current_user[:profile_photo] != nil -%>
-            <%= image_tag("/uploads/user/profile_photo/#{current_user.id}/#{current_user.profile_photo.file.file.split("/")[-1]}") %>
+            <%= image_tag("https://s3.amazonaws.com/the-morning-t/uploads/user/profile_photo/#{current_user.id}/#{current_user.profile_photo.path.split("/")[-1]}") %>
           <%- end -%>
         <%- else -%>
           <li>

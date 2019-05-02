@@ -125,12 +125,32 @@ stops.each do |stop|
   Stop.create!(name: stop)
 end
 
+<<<<<<< HEAD
+admin = User.create!(
+||||||| merged common ancestors
+User.create(
+=======
 User.create!(
+>>>>>>> 9598fa673f466b3f7a64fd9b256bf933b154d650
   user_name: "fakeadmin",
   email: "fakeadmin@happypath.com",
   password: "password",
   admin: true
 )
+<<<<<<< HEAD
+
+Stop.all.each do |stop|
+  2.times do
+      Review.create!(
+        user_id: admin.id,
+        stop_id: stop.id,
+        rating:Faker::Number.between(1, 5),
+        body: Faker::Restaurant.review
+      )
+  end
+end
+||||||| merged common ancestors
+=======
 
 Stop.all.each do |stop|
   2.times do
@@ -141,3 +161,4 @@ Stop.all.each do |stop|
       )
   end
 end
+>>>>>>> 9598fa673f466b3f7a64fd9b256bf933b154d650
