@@ -77,17 +77,16 @@ class Stop extends React.Component {
       })
     }
     return(
-      <div className="stopWrapper">
+      <div>
         <div className="name">
           {this.state.stop.name}
         </div>
         <div className="errors">
           {this.state.errors}
         </div>
-        <Form
-          handleSubmit = {this.handleSubmit}
-          addNewReview = {this.addNewReview}
-        />
+        <div>
+            <Form handleSubmit={ this.handleSubmit} addNewReview={ this.addNewReview} />
+        </div>
         <div className="reviews">
           {body}
         </div>

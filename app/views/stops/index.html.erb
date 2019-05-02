@@ -1,10 +1,9 @@
 
-
-<ul>
+<div><br/></div>
+<div>
   <% @stops.each do |stop| %>
-
-    <li>
+    <p class="stop-index">
       <%= link_to stop.name, stop_path(stop) %>
-    </li>
+    </p>
   <% end %>
-</ul>
+</div>
