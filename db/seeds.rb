@@ -125,7 +125,12 @@ stops.each do |stop|
   Stop.create!(name: stop)
 end
 
-User.create!(user_name:'billllll', email:"bill@wowitsbill.com", password:"itsbill", admin: true)
+User.create!(
+  user_name: "fakeadmin",
+  email: "fakeadmin@happypath.com",
+  password: "password",
+  admin: true
+)
 
 Stop.all.each do |stop|
   2.times do

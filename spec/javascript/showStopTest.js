@@ -21,6 +21,9 @@ describe('show page test', () => {
           "rating": 2,
           "body": "not enough pasta, too much sauce",
           "stop_id": 1,
+          "up_votes": 1,
+          "down_votes": 1,
+          "user_id": 1,
           "created_at": "2019-04-24T19:20:15.921Z",
           "updated_at": "2019-04-24T19:20:15.921Z"
         },
@@ -29,6 +32,9 @@ describe('show page test', () => {
           "rating": 5,
           "body": "Best stop ever",
           "stop_id": 1,
+          "up_votes": 3,
+          "down_votes": 3,
+          "user_id": 3,
           "created_at": "2019-04-24T20:44:18.854Z",
           "updated_at": "2019-04-24T20:44:18.854Z"
         },
@@ -37,6 +43,9 @@ describe('show page test', () => {
           "rating": 3,
           "body": "Don't stop here",
           "stop_id": 1,
+          "up_votes": 4,
+          "down_votes": 4,
+          "user_id": 4,
           "created_at": "2019-04-24T20:45:34.178Z",
           "updated_at": "2019-04-24T20:45:34.178Z"
         }
@@ -45,6 +54,22 @@ describe('show page test', () => {
     fetchMock.get('/api/v1/stops/1', {
       status: 200,
       body: body
+    });
+
+    let voteBody = {vote: 1}
+    fetchMock.get('/api/v1/votes/1', {
+      status: 200,
+      body: voteBody
+    });
+
+    fetchMock.get('/api/v1/votes/3', {
+      status: 200,
+      body: voteBody
+    });
+
+    fetchMock.get('/api/v1/votes/4', {
+      status: 200,
+      body: voteBody
     });
 
     component = mount(
@@ -58,17 +83,17 @@ describe('show page test', () => {
    expect(component.find(Stop)).toBePresent();
   });
 
-  fit('should show labels, fetch data from api and present', (done) => {
+  it('should show labels, fetch data from api and present', (done) => {
     setTimeout(() => {
       expect(component.find('.name')).toBePresent()
-      
+
       expect(component.state('stop')).toEqual({
         "id": 1,
         "name": "Edward Hopper",
         "created_at": "2019-04-23T16:43:36.475Z",
         "updated_at": "2019-04-23T16:43:36.475Z"
       });
-
+      // debugger
       expect(component.text()).toMatch(/Edward Hopper/)
       done()
     },0)
@@ -89,11 +114,13 @@ describe('show page test', () => {
           "rating": 2,
           "body": "not enough pasta, too much sauce",
           "stop_id": 1,
+          "up_votes": 1,
+          "down_votes": 1,
+          "user_id": 1,
           "created_at": "2019-04-24T19:20:15.921Z",
           "updated_at": "2019-04-24T19:20:15.921Z"
-        }
-      )
-      done()
+        })
+        done()
     },0)
   });
 
@@ -107,6 +134,9 @@ describe('show page test', () => {
             "rating": 2,
             "body": "not enough pasta, too much sauce",
             "stop_id": 1,
+            "up_votes": 1,
+            "down_votes": 1,
+            "user_id": 1,
             "created_at": "2019-04-24T19:20:15.921Z",
             "updated_at": "2019-04-24T19:20:15.921Z"
           },
@@ -115,6 +145,9 @@ describe('show page test', () => {
             "rating": 5,
             "body": "Best stop ever",
             "stop_id": 1,
+            "up_votes": 3,
+            "down_votes": 3,
+            "user_id": 3,
             "created_at": "2019-04-24T20:44:18.854Z",
             "updated_at": "2019-04-24T20:44:18.854Z"
           },
@@ -123,14 +156,17 @@ describe('show page test', () => {
             "rating": 3,
             "body": "Don't stop here",
             "stop_id": 1,
+            "up_votes": 4,
+            "down_votes": 4,
+            "user_id": 4,
             "created_at": "2019-04-24T20:45:34.178Z",
             "updated_at": "2019-04-24T20:45:34.178Z"
           }
         ]
       );
 
-      expect(component.find('.rating').first().text()).toEqual('Rating: 2')
-      expect(component.find('.review_body').first().text()).toEqual('Body: not enough pasta, too much sauce')
+      expect(component.find('.review').first().text()).toMatch(/Rating:2/)
+      expect(component.find('.review').first().text()).toMatch(/not enough pasta, too much sauce/)
       done()
     },0)
   });
