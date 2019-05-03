@@ -1,4 +1,14 @@
-<p>
-  Modify me in `app/views/homes/index.html.erb` or change the root directive in
-  `config/routes.rb`
-</p>
+<div class="home" >
+  <div class="white_out">
+    <div class="welcome">
+      <div>
+          Welcome to the morning T<br>
+      </div>
+      <div>
+        <p class = "welcome_nav">
+          <%= link_to 'Sign In', new_user_session_path %>, <%= link_to 'Create An Account', new_user_registration_path %>, or <%= link_to "View All Stops", stops_path %>.
+        </p>
+      </div>
+    </div>
+  </div>
+<div/>
