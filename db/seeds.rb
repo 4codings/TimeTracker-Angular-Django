@@ -141,6 +141,7 @@ Stop.all.each do |stop|
         body: Faker::Restaurant.review
       )
   end
+end
 
   lines = ["Orange", "Red", "Blue", "Green", "Silver"]
   Stop.all.each do |stop|
