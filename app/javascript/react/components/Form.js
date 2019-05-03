@@ -11,6 +11,7 @@ class Form extends Component {
     this.handleRatingChange = this.handleRatingChange.bind(this)
     this.handleBodyChange = this.handleBodyChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.clearForm = this.clearForm.bind(this)
    }
 
   handleRatingChange(event){
@@ -21,10 +22,15 @@ class Form extends Component {
     this.setState({body: event.target.value})
   }
 
+  clearForm() {
+    this.setState({rating: '', body: ''})
+  }
+
   handleSubmit(event){
     event.preventDefault()
     let payload={review: this.state}
     this.props.addNewReview(payload)
+    this.clearForm()
   }
 
   render(){

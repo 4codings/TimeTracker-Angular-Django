@@ -1,16 +1,14 @@
 <h4>Review Administration Page</h4>
 
 <% @reviews.each do |review| %>
-  <div class="media-object">
-    <div class="media-object-section">
-      <%= form_tag "/admin/review/#{review.id}", method: "post" do %>
-       <%= submit_tag "Delete Review" %>
-      <% end %>
-    </div>
-    <div class="media-object-section">
-      <h4><%= review.rating %> stars </h4>
-      <p><%= review.body %></p>
-    </div>
+<div class="grid-x">
+  <div class="cell small-2"><%= form_tag "/admin/review/#{review.id}", method: "post" do %>
+   <%= submit_tag "Delete Review" %>
+  <% end %>
   </div>
-
+  <div class="cell small-6 l-pad">
+    <h5><%= review.rating %> stars </h5>
+    <%= review.body %>
+  </div>
+  </div>
 <% end %>

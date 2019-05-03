@@ -2,7 +2,15 @@ class StopsController < ApplicationController
   before_action :authorize_user, except: [:index, :show]
 
   def index
-    @stops=Stop.all
+    if !params[:line]
+      @stops = Stop.all
+      @line = "All Lines"
+      @color = ""
+    else
+      @stops = Stop.where(line: params[:line])
+      @line = "#{params[:line]} Line"
+      @color = params[:line]
+    end
   end
 
   def show
