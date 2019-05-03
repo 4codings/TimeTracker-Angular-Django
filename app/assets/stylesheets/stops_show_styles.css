@@ -49,3 +49,9 @@
   margin-left: 1rem;
   margin-bottom: 1rem;
 }
+
+.red { color: #FA2D27 !important; }
+.orange { color: #FD8A03 !important; }
+.green { color: #008150 !important; }
+.blue { color: #2F5DA6 !important; }
+.silver { color: #9A9C9D !important; }

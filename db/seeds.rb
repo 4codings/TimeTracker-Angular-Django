@@ -141,4 +141,15 @@ Stop.all.each do |stop|
         body: Faker::Restaurant.review
       )
   end
-end
+
+  lines = ["Orange", "Red", "Blue", "Green", "Silver"]
+  Stop.all.each do |stop|
+    stop.line = lines.sample
+    stop.save
+  end
+
+  Color.create(line: "Red", color:"#FA2D27")
+  Color.create(line: "Green", color:"#008150")
+  Color.create(line: "Orange", color:"#FD8A03")
+  Color.create(line: "Blue", color:"#2F5DA6")
+  Color.create(line: "Silver", color:"#9A9C9D")

@@ -20,13 +20,21 @@
 <body>
   <div class="top-bar">
     <div class="top-bar-left">
-      <ul class="dropdown menu">
+      <ul class="dropdown menu" data-dropdown-menu>
         <%= image_tag'mbta-secondary-logo-circle.png', style: 'height:30px; width:30px;' %>
         <div className = "logo">
           <li class="menu-text">The Morning T</li>
         </div>
         <li>
-          <%= link_to "All Stops", stops_path %>
+          <a href="/stops">Lines</a>
+        <ul class="menu vertical">
+          <li><a href="/stops">All Lines</a></li>
+          <li><a href="/stops?line=Red">Red Line</a></li>
+          <li><a href="/stops?line=Green">Green Line</a></li>
+          <li><a href="/stops?line=Orange">Orange Line</a></li>
+          <li><a href="/stops?line=Blue">Blue Line</a></li>
+          <li><a href="/stops?line=Silver">Silver Line</a></li>
+        </ul>
         </li>
       </ul>
     </div>
